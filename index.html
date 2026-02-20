@@ -164,8 +164,11 @@
             <label>Acción Inmediata Tomada</label>
             <textarea id="accion" placeholder="¿Qué medidas tomó?" required></textarea>
 
-            <label>Datos del Reportante</label>
-            <input type="text" id="reportante" placeholder="Opcional">
+            <label>Nombre del Reportante</label>
+            <input type="text" id="reportante" placeholder="Nombre completo (Opcional)">
+
+            <label>Correo Electrónico</label>
+            <input type="email" id="email_usuario" placeholder="usuario@ejemplo.com" required>
 
             <div class="confidential-box">
                 <input type="checkbox" id="confidential">
@@ -198,12 +201,13 @@
             descripcion: document.getElementById('descripcion').value,
             accion: document.getElementById('accion').value,
             reportante: document.getElementById('reportante').value || "Anónimo",
+            email_usuario: document.getElementById('email_usuario').value, // Enviar el correo
             confidencial: document.getElementById('confidential').checked ? "SÍ" : "NO"
         };
 
         // Validación simple de campos obligatorios
-        if(!params.vuelo || !params.descripcion || !params.fase || !params.matricula) {
-            alert("Por favor, completa todos los campos obligatorios.");
+        if(!params.vuelo || !params.descripcion || !params.fase || !params.email_usuario) {
+            alert("Por favor, completa todos los campos obligatorios, incluyendo tu correo.");
             return;
         }
 
